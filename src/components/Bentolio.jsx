@@ -167,7 +167,7 @@ export default function Bentolio() {
             >
               <div className="w-full h-full min-h-[400px] relative overflow-hidden rounded-3xl group">
                 <img
-                  src="/public/images/dp.jpg"
+                  src="/images/dp.jpg"
                   alt="S∆YØN Profile"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -248,7 +248,7 @@ export default function Bentolio() {
                   {/* Blender */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img src="/public/images/Logo_Blender.svg.png" alt="Blender" className="w-full h-full object-contain" />
+                      <img src="/images/Logo_Blender.svg.png" alt="Blender" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-orange-400 transition-colors">Blender</span>
                   </div>
@@ -256,7 +256,7 @@ export default function Bentolio() {
                   {/* After Effects */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-8 h-8 rounded-lg overflow-hidden">
-                      <img src="/public/images/aelogo.png" alt="After Effects" className="w-full h-full object-contain" />
+                      <img src="/images/aelogo.png" alt="After Effects" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-purple-400 transition-colors">After Effects</span>
                   </div>
@@ -264,7 +264,7 @@ export default function Bentolio() {
                   {/* DaVinci Resolve */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-8 h-8 rounded-lg overflow-hidden">
-                      <img src="/public/images/DaVincilogo.png" alt="DaVinci Resolve" className="w-full h-full object-contain" />
+                      <img src="/images/DaVincilogo.png" alt="DaVinci Resolve" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-red-400 transition-colors">DaVinci</span>
                   </div>
@@ -272,7 +272,7 @@ export default function Bentolio() {
                   {/* Photoshop */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img src="/public/images/photoshoplogo.png" alt="Photoshop" className="w-full h-full object-contain" />
+                      <img src="/images/photoshoplogo.png" alt="Photoshop" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-blue-400 transition-colors">Photoshop</span>
                   </div>
@@ -280,7 +280,7 @@ export default function Bentolio() {
                   {/* Final Cut Pro */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-8 h-8 rounded-lg overflow-hidden">
-                      <img src="/public/images/2015_Final_Cut_Pro_Logo.png" alt="Final Cut Pro" className="w-full h-full object-contain" />
+                      <img src="/images/2015_Final_Cut_Pro_Logo.png" alt="Final Cut Pro" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-gray-300 transition-colors">Final Cut</span>
                   </div>
@@ -288,7 +288,7 @@ export default function Bentolio() {
                   {/* Lightroom */}
                   <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
                     <div className="w-8 h-8 rounded-lg overflow-hidden">
-                      <img src="/public/images/lightroomlogo.png" alt="Lightroom" className="w-full h-full object-contain" />
+                      <img src="/images/lightroomlogo.png" alt="Lightroom" className="w-full h-full object-contain" />
                     </div>
                     <span className="text-white/60 text-xs font-medium group-hover/tech:text-blue-300 transition-colors">Lightroom</span>
                   </div>
