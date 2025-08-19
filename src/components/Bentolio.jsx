@@ -28,11 +28,10 @@ export default function Bentolio() {
   const navigate = useNavigate();
 
   const demoWorks = [
-    { title: "Escape VFX", type: "3D Visualization", image: "/src/assets/escape.jpg" },
-    { title: "Deadpool Collab", type: "Product Design", image: "/src/assets/deadpool.jpg" },
-    { title: "Launch Event", type: "Motion Graphics", image: "/src/assets/launch.jpg" },
-    { title: "Space Explorer", type: "3D Animation", image: "/src/assets/space.jpg" },
-    { title: "Automotive Render", type: "Car Visualization" },
+    { title: "3D Car Visualization", type: "Automotive Design", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
+    { title: "Product Rendering", type: "3D Visualization", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
+    { title: "Motion Graphics", type: "3D Animation", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
+    { title: "VFX Sequence", type: "Visual Effects", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
   ];
 
   const ContactModal = () => (
@@ -307,9 +306,9 @@ export default function Bentolio() {
               }}
               className="sm:col-span-1 lg:col-span-4 order-4 cursor-pointer"
             >
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl h-full p-6 hover:bg-white/10 transition-colors">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl flex flex-col justify-start p-6 hover:bg-white/10 transition-colors">
                 <h3 className="text-white font-semibold mb-4">Recent Works</h3>
-                <div className="space-y-3 max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/20">
+                <div className="space-y-3 max-h-[280px] overflow-y-auto recent-works-scroll">
                   {demoWorks.map((work, index) => (
                     <motion.div
                       key={index}
@@ -317,10 +316,22 @@ export default function Bentolio() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 1.8 + (0.1 * index) }}
                       className="p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group"
-                      onClick={() => navigate('/work')}
+                      onClick={() => window.open(work.instagram, '_blank')}
                     >
-                      <p className="text-white font-medium text-sm group-hover:text-purple-400 transition-colors">{work.title}</p>
-                      <p className="text-white/60 text-xs">{work.type}</p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
+                          <img
+                            src={work.image}
+                            alt={work.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-white font-medium text-sm group-hover:text-purple-400 transition-colors">{work.title}</p>
+                          <p className="text-white/60 text-xs">{work.type}</p>
+                        </div>
+                        <Instagram size={16} className="text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
                     </motion.div>
                   ))}
                 </div>
