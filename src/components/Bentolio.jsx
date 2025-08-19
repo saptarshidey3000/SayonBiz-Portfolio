@@ -154,10 +154,10 @@ export default function Bentolio() {
         <div className="gap-6 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Section */}
           <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 lg:col-span-8">
-            {/* Profile Image - Appears First */}
+            {/* Profile Image - Appears FIRST */}
             <motion.div 
-              initial={{ scale: 0, rotate: -10 }}
-              animate={{ scale: 1, rotate: 0 }}
+              initial={{ scale: 0, rotate: -10, opacity: 0 }}
+              animate={{ scale: 1, rotate: 0, opacity: 1 }}
               transition={{ 
                 type: "spring",
                 duration: 1.2,
@@ -167,7 +167,7 @@ export default function Bentolio() {
             >
               <div className="w-full h-full min-h-[400px] relative overflow-hidden rounded-3xl group">
                 <img
-                  src="/public/images/333078122_1511178132743630_7111206645612737470_n.jpg"
+                  src="/public/images/dp.jpg"
                   alt="S∆YØN Profile"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -175,6 +175,7 @@ export default function Bentolio() {
               </div>
             </motion.div>
 
+            {/* All other elements appear together AFTER profile image */}
             {/* Hero Title */}
             <motion.div 
               initial={{ opacity: 0, x: -100 }}
@@ -182,7 +183,7 @@ export default function Bentolio() {
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 0.8
+                delay: 1.5 // Appears after profile image
               }}
               className="sm:col-span-2 lg:col-span-5 rounded-3xl h-full order-2 lg:order-1 cursor-pointer"
               onClick={() => navigate('/work')}
@@ -195,7 +196,7 @@ export default function Bentolio() {
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 }}
+                    transition={{ delay: 1.8 }}
                     className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-4"
                   >
                     3D VFX Artist &{' '}
@@ -207,33 +208,91 @@ export default function Bentolio() {
                   <motion.p 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 }}
-                    className="text-white/60 text-lg"
+                    transition={{ delay: 2.0 }}
+                    className="text-white/60 text-lg mb-4"
                   >
                     Crafting cinematic visuals that drive brands forward
+                  </motion.p>
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.2 }}
+                    className="text-white/50 text-sm leading-relaxed mb-6"
+                  >
+                    Specializing in photorealistic 3D renders, automotive visualization, and brand storytelling. 
+                    Collaborated with industry leaders to create compelling visual narratives that captivate audiences.
                   </motion.p>
                   <ArrowUpRight className="mt-4 text-white/40 group-hover:text-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-all" size={24} />
                 </div>
               </div>
             </motion.div>
 
-            {/* About */}
+            {/* Tech Stack */}
             <motion.div 
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 1.1
+                delay: 1.5 // Same delay as hero title
               }}
               className="sm:col-span-1 lg:col-span-4 order-3 cursor-pointer"
             >
-              <div className="flex flex-col justify-between items-start gap-8 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl h-full hover:bg-white/10 transition-colors group">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full animate-bounce group-hover:animate-pulse"></div>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  Specializing in photorealistic 3D renders, automotive visualization, and brand storytelling. 
-                  Collaborated with industry leaders to create compelling visual narratives that captivate audiences.
-                </p>
+              <div className="flex flex-col justify-between items-start gap-6 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl h-full hover:bg-white/10 transition-colors group">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full animate-bounce group-hover:animate-pulse"></div>
+                  <h3 className="text-white font-semibold text-lg">Tech Stack</h3>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-4 w-full">
+                  {/* Blender */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden">
+                      <img src="/public/images/Logo_Blender.svg.png" alt="Blender" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-orange-400 transition-colors">Blender</span>
+                  </div>
+
+                  {/* After Effects */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-8 h-8 rounded-lg overflow-hidden">
+                      <img src="/public/images/aelogo.png" alt="After Effects" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-purple-400 transition-colors">After Effects</span>
+                  </div>
+
+                  {/* DaVinci Resolve */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-8 h-8 rounded-lg overflow-hidden">
+                      <img src="/public/images/DaVincilogo.png" alt="DaVinci Resolve" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-red-400 transition-colors">DaVinci</span>
+                  </div>
+
+                  {/* Photoshop */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden">
+                      <img src="/public/images/photoshoplogo.png" alt="Photoshop" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-blue-400 transition-colors">Photoshop</span>
+                  </div>
+
+                  {/* Final Cut Pro */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-8 h-8 rounded-lg overflow-hidden">
+                      <img src="/public/images/2015_Final_Cut_Pro_Logo.png" alt="Final Cut Pro" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-gray-300 transition-colors">Final Cut</span>
+                  </div>
+
+                  {/* Lightroom */}
+                  <div className="flex flex-col items-center gap-2 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group/tech">
+                    <div className="w-8 h-8 rounded-lg overflow-hidden">
+                      <img src="/public/images/lightroomlogo.png" alt="Lightroom" className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-white/60 text-xs font-medium group-hover/tech:text-blue-300 transition-colors">Lightroom</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
@@ -244,7 +303,7 @@ export default function Bentolio() {
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 1.3
+                delay: 1.5 // Same delay as other elements
               }}
               className="sm:col-span-1 lg:col-span-4 order-4 cursor-pointer"
             >
@@ -256,7 +315,7 @@ export default function Bentolio() {
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 1.5 + (0.1 * index) }}
+                      transition={{ delay: 1.8 + (0.1 * index) }}
                       className="p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group"
                       onClick={() => navigate('/work')}
                     >
@@ -269,8 +328,56 @@ export default function Bentolio() {
             </motion.div>
           </div>
 
-          {/* Right Section */}
+          {/* Right Section - All appear together after profile image */}
           <div className="flex flex-col gap-6 lg:col-span-4">
+{/* Client Logo Loop - Infinite Scroll */}
+<motion.div 
+  initial={{ opacity: 0, x: 100 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ 
+    type: "spring",
+    duration: 1,
+    delay: 1.5
+  }}
+  className="cursor-pointer"
+>
+  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:bg-white/10 transition-colors group overflow-hidden">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full animate-pulse group-hover:animate-bounce"></div>
+      <h3 className="text-white font-semibold text-xl">Trusted By</h3>
+    </div>
+    
+    {/* Wrapper with hidden overflow */}
+    <div className="relative w-full overflow-hidden">
+      <motion.div
+        className="flex gap-12 items-center min-w-max"
+        animate={{
+          x: ["0%", "-50%"], // move left by half of the content width
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 20,
+          ease: "linear",
+        }}
+      >
+        {/* Logos - repeat set twice for seamless loop */}
+        <div className="flex gap-12 items-center min-w-max">
+          <img src="/images/redbulllogo.png" alt="Red Bull" className="h-10 w-auto object-contain" />
+          <img src="/images/Realme_logo.png" alt="Realme" className="h-10 w-auto object-contain" />
+          <img src="/images/soulstorelogo.webp" alt="The Souled Store" className="h-10 w-auto object-contain" />
+        </div>
+
+        <div className="flex gap-12 items-center min-w-max">
+          <img src="/images/redbulllogo.png" alt="Red Bull" className="h-10 w-auto object-contain" />
+          <img src="/images/Realme_logo.png" alt="Realme" className="h-10 w-auto object-contain" />
+          <img src="/images/soulstorelogo.webp" alt="The Souled Store" className="h-10 w-auto object-contain" />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</motion.div>
+
+
             {/* Featured Projects */}
             <motion.div 
               initial={{ opacity: 0, x: 100 }}
@@ -278,7 +385,7 @@ export default function Bentolio() {
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 1.6
+                delay: 1.5 // Same delay as other elements
               }}
               className="cursor-pointer"
               onClick={() => navigate('/work')}
@@ -286,16 +393,21 @@ export default function Bentolio() {
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:bg-white/10 transition-colors group">
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-white font-semibold text-xl">Featured Work</h3>
+                    <h3 className="text-white font-semibold text-xl">What I Offer</h3>
                     <ArrowUpRight className="text-white/60 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" size={20} />
                   </div>
-                  <div className="w-full h-48 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl mb-4 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4">
-                      <p className="text-white font-medium">Automotive Render</p>
-                      <p className="text-white/60 text-sm">3D Visualization</p>
-                    </div>
-                  </div>
+                  <div className="w-full h-48 rounded-2xl mb-4 relative overflow-hidden">
+  <img 
+    src="/images/image2.jpg" 
+    alt="3D Animation" 
+    className="w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+  <div className="absolute bottom-4 left-4">
+    <p className="text-white font-medium">3D Animations</p>
+    <p className="text-white/60 text-sm">3D Visualization</p>
+  </div>
+</div>
                 </div>
                 
                 <div className="space-y-4">
@@ -315,7 +427,7 @@ export default function Bentolio() {
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 1.8
+                delay: 1.5 // Same delay as other elements
               }}
             >
               <button
@@ -337,7 +449,7 @@ export default function Bentolio() {
               transition={{ 
                 type: "spring",
                 duration: 1,
-                delay: 2.0
+                delay: 1.5 // Same delay as other elements
               }}
             >
               <div className="flex justify-between items-center px-8 py-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl">

@@ -6,9 +6,27 @@ import Work from './pages/Work';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background Video */}
+      <div className="fixed inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/public/videos/backgroundvideo1.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
+
+      {/* Gradient overlay for extra depth */}
+      <div className="fixed inset-0 z-[1] bg-gradient-to-br from-gray-900/80 via-black/70 to-purple-900/80"></div>
+
       {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 z-[2] overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-purple-500/5 to-transparent rounded-full"></div>
