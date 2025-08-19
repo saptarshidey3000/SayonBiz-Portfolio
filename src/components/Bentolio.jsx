@@ -438,7 +438,7 @@ export default function Bentolio() {
                   <p className="text-white/90 text-sm">Ready to collaborate?</p>
                   <ArrowUpRight className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={20} />
                 </div>
-                <p className="text-white font-bold text-2xl">Hire Me</p>
+                <p className="text-white font-bold text-2xl">Contact Me</p>
               </button>
             </motion.div>
 
