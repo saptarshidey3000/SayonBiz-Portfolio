@@ -134,10 +134,13 @@ export default function Bentolio() {
             </h1>
             <nav className="flex items-center gap-8">
            {['WORK', 'ABOUT', 'CONTACT'].map((link) => (
-  <button 
-    key={link} 
+  <button
+    key={link}
     onClick={() => {
-      if (link === 'WORK') navigate('/work');
+      if (link === 'WORK') {
+        const section = document.getElementById("featured-works");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }
       if (link === 'CONTACT') setShowContact(true);
       if (link === 'ABOUT') {
         const section = document.getElementById("about");

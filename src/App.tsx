@@ -36,7 +36,7 @@ function App() {
       <div className="relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
+          {/* <Route path="/work" element={<Work />} /> */}
         </Routes>
       </div>
     </div>

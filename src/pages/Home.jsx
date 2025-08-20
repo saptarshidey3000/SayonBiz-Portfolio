@@ -14,7 +14,7 @@ const Home = () => {
       </section>
 
       {/* Demo Works Stack */}
-      <section className="py-20">
+      <section id="featured-works" className="py-20">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
