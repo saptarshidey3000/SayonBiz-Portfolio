@@ -28,10 +28,10 @@ export default function Bentolio() {
   const navigate = useNavigate();
 
   const demoWorks = [
-    { title: "3D Car Visualization", type: "Automotive Design", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
-    { title: "Product Rendering", type: "3D Visualization", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
-    { title: "Motion Graphics", type: "3D Animation", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
-    { title: "VFX Sequence", type: "Visual Effects", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/p/CyBUEuuhwzR/" },
+    { title: "Soul Store collaboration", type: "Deadpool: Utility Suit", image: "/images/Image-538.jpg", instagram: "https://www.instagram.com/thesouledstore/reel/CyBUEuuhwzR/" },
+    { title: "Escaping the reality 🪄💫", type: "3D Visualization", image: "/images/Image-828.jpg", instagram: "https://www.instagram.com/p/CorwTsAJlFr/" },
+    { title: "Real Me collaboration", type: "11pro +", image: "/images/Image-16.jpg", instagram: "https://www.instagram.com/p/CtbxbCnJK0n/" },
+    { title: "VFX Sequence", type: "Visual Effects", image: "/images/Image-3.jpg", instagram: "https://www.instagram.com/p/CnjqbJcuL3Y/" },
   ];
 
   const ContactModal = () => (
@@ -133,18 +133,22 @@ export default function Bentolio() {
               <span className="font-bold">S∆YØN</span>
             </h1>
             <nav className="flex items-center gap-8">
-              {['WORK', 'ABOUT', 'CONTACT'].map((link) => (
-                <button 
-                  key={link} 
-                  onClick={() => {
-                    if (link === 'WORK') navigate('/work');
-                    if (link === 'CONTACT') setShowContact(true);
-                  }}
-                  className="font-light text-sm sm:text-base text-white/80 hover:text-white transition-colors cursor-pointer"
-                >
-                  {link}
-                </button>
-              ))}
+           {['WORK', 'ABOUT', 'CONTACT'].map((link) => (
+  <button 
+    key={link} 
+    onClick={() => {
+      if (link === 'WORK') navigate('/work');
+      if (link === 'CONTACT') setShowContact(true);
+      if (link === 'ABOUT') {
+        const section = document.getElementById("about");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+  >
+    {link}
+  </button>
+))}
+
             </nav>
           </div>
         </motion.header>
@@ -185,45 +189,62 @@ export default function Bentolio() {
                 delay: 1.5 // Appears after profile image
               }}
               className="sm:col-span-2 lg:col-span-5 rounded-3xl h-full order-2 lg:order-1 cursor-pointer"
-              onClick={() => navigate('/work')}
+              // onClick={() => navigate('/work')}
             >
-              <div className="flex flex-col justify-between p-8 bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border border-white/10 rounded-3xl h-full min-h-[400px] hover:from-purple-800/30 hover:to-blue-800/30 transition-all duration-500 group">
-                <div className="flex justify-end w-full">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse group-hover:animate-bounce"></div>
-                </div>
-                <div>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8 }}
-                    className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-4"
-                  >
-                    3D VFX Artist &{' '}
-                    <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent italic font-light">
-                      Automotive
-                    </span>{' '}
-                    Designer
-                  </motion.p>
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2.0 }}
-                    className="text-white/60 text-lg mb-4"
-                  >
-                    Crafting cinematic visuals that drive brands forward
-                  </motion.p>
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2.2 }}
-                    className="text-white/50 text-sm leading-relaxed mb-6"
-                  >
-                    Specializing in photorealistic 3D renders, automotive visualization, and brand storytelling. 
-                    Collaborated with industry leaders to create compelling visual narratives that captivate audiences.
-                  </motion.p>
-                  <ArrowUpRight className="mt-4 text-white/40 group-hover:text-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-all" size={24} />
-                </div>
-              </div>
+<div className="relative flex flex-col justify-between p-8 backdrop-blur-sm border border-white/10 rounded-3xl h-full min-h-[400px] hover:border-white/20 transition-all duration-500 group overflow-hidden">
+  {/* Background Image Overlay */}
+  <div className="absolute inset-0 rounded-3xl overflow-hidden">
+    <img 
+      src="/images/image-4.jpg" 
+      alt="Background" 
+      className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+      onError={(e) => {
+        e.target.style.display = 'none';
+      }}
+    />
+    {/* Gradient Overlays */}
+    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/40 group-hover:from-purple-800/50 group-hover:to-blue-800/50 transition-all duration-500"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 flex justify-end w-full">
+    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse group-hover:animate-bounce"></div>
+  </div>
+  
+  <div className="relative z-10">
+    <motion.p 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.8 }}
+      className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-4 drop-shadow-lg"
+    >
+      3D VFX Artist &{' '}
+      <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent italic font-light">
+        Automotive
+      </span>{' '}
+      Designer
+    </motion.p>
+    <motion.p 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2.0 }}
+      className="text-white/80 text-lg mb-4 drop-shadow-md"
+    >
+      Crafting cinematic visuals that drive brands forward
+    </motion.p>
+    <motion.p 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2.2 }}
+      className="text-white/70 text-sm leading-relaxed mb-6 drop-shadow-md"
+    >
+      Specializing in photorealistic 3D renders, automotive visualization, and brand storytelling. 
+      Collaborated with industry leaders to create compelling visual narratives that captivate audiences.
+    </motion.p>
+    <ArrowUpRight className="mt-4 text-white/60 group-hover:text-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-all drop-shadow-md" size={24} />
+  </div>
+</div>
             </motion.div>
 
             {/* Tech Stack */}

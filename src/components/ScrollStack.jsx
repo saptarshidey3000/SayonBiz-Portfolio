@@ -1,99 +1,127 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from "react";
 
 const ScrollStack = () => {
-  const works = [
-    {
-      id: 1,
-      title: "Escape VFX",
-      category: "3D Visualization",
-      image: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800",
-      link: "https://www.instagram.com/p/CnjqbJcuL3Y/"
-    },
-    {
-      id: 2,
-      title: "Product Launch",
-      category: "Motion Graphics",
-      image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
-      link: "https://www.instagram.com/p/Cs8sEL9LydE/"
-    },
-    {
-      id: 3,
-      title: "Brand Collaboration",
-      category: "VFX Sequence",
-      image: "https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800",
-      link: "https://www.instagram.com/p/CorwTsAJlFr/"
-    },
-    {
-      id: 4,
-      title: "Automotive Render",
-      category: "3D Design",
-      image: "https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=800",
-      link: "https://www.instagram.com/p/CyBUEuuhwzR/"
-    }
+  const scrollRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Infinite scroll effect
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scroll = () => {
+      if (!isHovered && !isDragging) {
+        scrollContainer.scrollLeft += 2; // ⏩ faster speed
+        const halfWidth = scrollContainer.scrollWidth / 2;
+        if (scrollContainer.scrollLeft >= halfWidth) {
+          scrollContainer.scrollLeft -= halfWidth; // seamless reset
+        }
+      }
+    };
+
+    const intervalId = setInterval(scroll, 20);
+    return () => clearInterval(intervalId);
+  }, [isHovered, isDragging]);
+
+  // Video data
+  const videos = [
+    { src: "/videos/demo1.mp4", link: "https://www.instagram.com/p/Cx0R-EYpkWu/" },
+    // { src: "/videos/Video-387.mp4", link: "https://www.instagram.com/p/ChCv7T0ppnT/" },
+    { src: "/videos/Video-660.mp4", link: "https://www.instagram.com/p/CqkyLTCJMTz/" },
+    { src: "/videos/backgroundvideo1.mp4", link: "https://www.instagram.com/p/Cs8sEL9LydE/" },
+    { src: "/videos/Video-140.mp4", link: "https://www.instagram.com/p/CyBUEuuhwzR/" },
   ];
 
+  const VideoCard = ({ video }) => (
+    <div
+      className="flex-shrink-0 relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+      onClick={() => window.open(video.link, "_blank")}
+    >
+      <video
+        className="w-48 h-80 object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src={video.src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg
+            className="w-12 h-12 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2.163c3.204...z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Mouse + Touch drag handlers
+  const handleStart = (clientX) => {
+    setIsDragging(true);
+    setStartX(clientX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMove = (clientX, e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = clientX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // drag speed multiplier
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleEnd = () => setIsDragging(false);
+
   return (
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="relative">
-        {/* Scrollable container */}
-        <div className="flex gap-8 overflow-x-auto pb-8 scrollbar-thin scrollbar-thumb-white/20">
-          {works.map((work, index) => (
-            <motion.div
-              key={work.id}
-              initial={{ opacity: 0, y: 50, rotateY: -15 }}
-              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: index * 0.2,
-                type: "spring",
-                stiffness: 100
-              }}
-              viewport={{ once: true }}
-              className="flex-shrink-0 w-80 group perspective-1000"
-            >
-              <div className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:scale-105 hover:rotate-y-5">
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={work.image}
-                    alt={work.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <a
-                      href={work.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium hover:bg-white/30 transition-colors"
-                    >
-                      View on Instagram
-                    </a>
-                  </div>
-                </div>
+    <div className="w-full py-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Infinite Scroll Container */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-hidden cursor-grab"
+          style={{
+            scrollBehavior: "auto",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onMouseDown={(e) => handleStart(e.pageX)}
+          onMouseMove={(e) => handleMove(e.pageX, e)}
+          onMouseUp={handleEnd}
+          onMouseLeaveCapture={handleEnd}
+          onTouchStart={(e) => handleStart(e.touches[0].pageX)}
+          onTouchMove={(e) => handleMove(e.touches[0].pageX, e)}
+          onTouchEnd={handleEnd}
+        >
+          {/* First set */}
+          {videos.map((video, index) => (
+            <VideoCard key={`first-${index}`} video={video} />
+          ))}
 
-                <div className="p-6">
-                  <h3 className="text-white font-bold text-xl mb-2 group-hover:text-purple-400 transition-colors">
-                    {work.title}
-                  </h3>
-                  <p className="text-white/60 text-sm">
-                    {work.category}
-                  </p>
-                </div>
-
-                {/* Floating elements */}
-                <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse"></div>
-                <div className="absolute bottom-4 left-4 w-2 h-2 bg-gradient-to-r from-green-400 to-blue-400 rounded-full animate-bounce"></div>
-              </div>
-            </motion.div>
+          {/* Duplicate set */}
+          {videos.map((video, index) => (
+            <VideoCard key={`second-${index}`} video={video} />
           ))}
         </div>
 
-        {/* Gradient overlays for scroll indication */}
-        <div className="absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
+        {/* Call to action */}
+        <div className="text-center mt-8">
+          <p className="text-gray-400 text-lg">
+            Click on any video to view on Instagram
+          </p>
+        </div>
       </div>
     </div>
   );

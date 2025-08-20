@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Bentolio from '../components/Bentolio';
 import About from '../components/About';
-import LogoLoop from '../components/LogoLoop';
+// import LogoLoop from '../components/LogoLoop';
 import ScrollStack from '../components/ScrollStack';
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
       </section>
 
       {/* Client Logo Loop */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -39,11 +39,14 @@ const Home = () => {
         >
           <h2 className="text-2xl font-light text-white/60 mb-8">Trusted by Industry Leaders</h2>
         </motion.div>
-        <LogoLoop />
-      </section>
+        {/* <LogoLoop /> */}
+      {/* </section> */} 
 
       {/* About Section */}
-      <About />
+      <section id="about">
+        <About />
+      </section>
+     
 
       {/* Footer */}
       <footer className="py-16 px-4 sm:px-6 max-w-7xl mx-auto">
