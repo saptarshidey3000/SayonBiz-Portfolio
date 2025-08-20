@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Home from './pages/Home';
-import Work from './pages/Work';
+
 
 function App() {
   return (
