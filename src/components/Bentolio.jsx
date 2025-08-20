@@ -130,7 +130,7 @@ export default function Bentolio() {
         >
           <div className="flex sm:flex-row flex-col justify-between items-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl w-full">
             <h1 className="mb-4 sm:mb-0 font-light text-white text-2xl sm:text-3xl">
-              <span className="font-bold">S∆YØN</span>
+              <span className="font-bold">S∆YØN BIZ</span>
             </h1>
             <nav className="flex items-center gap-8">
            {['WORK', 'ABOUT', 'CONTACT'].map((link) => (
